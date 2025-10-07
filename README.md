@@ -159,7 +159,7 @@ O sistema foi projetado para ser extensível. Atualmente, três tipos de eventos
 
 1. **user:created** - Quando um novo cliente é cadastrado
 2. **user:updated** - Quando dados de um cliente são alterados
-3. **user:deleted** - When um cliente é removido
+3. **user:deleted** - Quando um cliente é removido
 
 O Loyalty Service reage apenas aos eventos `user:created` (criando pontos se o cliente optou pelo programa) e `user:deleted` (removendo os pontos do cliente). Isso significa que futuras atualizações não afetam os pontos acumulados.
 
@@ -224,4 +224,4 @@ Este projeto foi desenvolvido com extensibilidade em mente. Algumas ideias para 
 
 ## Obs (IA)
 Q: Foi usado IA neste projeto?
-A: Sim, para autocomplete e sujestão de estruturação melhor dos codigos de models e controllers (mais organizado de como eu havia feito inicialmente), e para montar o prop. "Estrutura do código" no README.md.
+A: Sim, para autocomplete e sugestão de estruturação melhor dos codigos de models e controllers (mais organizado de como eu havia feito inicialmente), e para montar o prop. "Estrutura do código" no README.md.
