@@ -195,41 +195,23 @@ O projeto implementa algumas práticas de segurança:
 
 ```
 customer-loyalty-integration/
-
 ├── services/
-
 │   ├── customer-service/          # Tudo relacionado ao gerenciamento de clientes
-
 │   │   ├── src/
-
 │   │   │   ├── controllers/       # Lógica das rotas HTTP
-
 │   │   │   ├── models/            # Interação com banco de dados
-
 │   │   │   ├── services/          # Regras de negócio
-
 │   │   │   └── utils/             # Utilitários e validações
-
 │   │   └── tests/                 # Testes unitários
-
 │   └── loyalty-service/           # Tudo relacionado ao programa de fidelidade
-
 │       ├── src/
-
 │       │   ├── controllers/       # Lógica das rotas HTTP
-
 │       │   ├── models/            # Interação com banco de dados
-
 │       │   ├── services/          # Regras de negócio e consumo de eventos
-
 │       │   └── utils/             # Utilitários e validações
-
 │       └── tests/                 # Testes unitários
-
 ├── database/
-
 │   └── init.sql                   # Scripts de criação das tabelas
-
 └── docker-compose.yml             # Configuração de todos os serviços
 ```
 
