@@ -41,7 +41,7 @@ Esta é a forma mais simples de executar o projeto:
 git clone <seu-repositorio>
 cd customer-loyalty-integration
 
-# Sobe todos os serviços de uma vez
+# Sobe todos os serviços de uma vez (certifique que seu docker está inicializado)
 npm run docker:up
 
 # Para parar todos os serviços
