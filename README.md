@@ -142,15 +142,25 @@ Content-Type: application/json
 
 ## Executando os testes
 
-O projeto inclui uma suíte completa de testes unitários:
+Os testes devem ser executados dentro dos containers dos serviços. Siga os passos abaixo:
 
-```bash
-# Roda todos os testes de ambos os serviços
-npm test
+1. Certifique-se de que os containers estão rodando:
+   ```bash
+   npm run docker:up
+   ```
 
-# Ou rode os testes de cada serviço individualmente
-cd services/customer-service && npm test
-cd services/loyalty-service && npm test
+2. Para rodar os testes do **Customer Service**:
+   ```bash
+   docker exec -it customer-loyalty-integration-customer-service-1 npm test
+   ```
+
+3. Para rodar os testes do **Loyalty Service**:
+   ```bash
+   docker exec -it customer-loyalty-integration-loyalty-service-1 npm test
+   ```
+
+> O nome do container pode variar. Use `docker ps` para conferir o nome exato se necessário.
+
 ```
 
 ## Como os eventos funcionam

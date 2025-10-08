@@ -45,6 +45,12 @@ class CustomerService {
       throw new Error('Cliente não encontrado');
     }
 
+    const updated = {
+      name: customerData.name ?? existingCustomer.name,
+      email: customerData.email ?? existingCustomer.email,
+      fidelity_opt_in: customerData.fidelityOptIn ?? existingCustomer.fidelity_opt_in
+    };
+
     // Verificar se o novo email já existe (se foi alterado)
     if (customerData.email !== existingCustomer.email) {
       const emailExists = await Customer.findByEmail(customerData.email);
