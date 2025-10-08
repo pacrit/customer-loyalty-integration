@@ -11,7 +11,7 @@ class CustomerService {
 
     const customer = await Customer.create(customerData);
     await EventPublisher.publishUserCreated(customer);
-    
+
     return customer;
   }
 
@@ -27,7 +27,7 @@ class CustomerService {
     const offset = (page - 1) * limit;
     const customers = await Customer.findAll(limit, offset);
     const total = await Customer.count();
-    
+
     return {
       customers,
       pagination: {
@@ -48,22 +48,23 @@ class CustomerService {
     const updated = {
       name: customerData.name ?? existingCustomer.name,
       email: customerData.email ?? existingCustomer.email,
-      fidelity_opt_in: customerData.fidelityOptIn ?? existingCustomer.fidelity_opt_in
+      fidelity_opt_in: 
+        (customerData.fidelityOptIn !== undefined ? customerData.fidelityOptIn : existingCustomer.fidelity_opt_in)
     };
 
     // Verificar se o novo email já existe (se foi alterado)
-    if (customerData.email !== existingCustomer.email) {
+    if (customerData.email && customerData.email !== existingCustomer.email) {
       const emailExists = await Customer.findByEmail(customerData.email);
       if (emailExists) {
         throw new Error('Email já cadastrado');
       }
     }
 
-    const customer = await Customer.update(id, customerData);
+    const customer = await Customer.update(id, updated);
     await EventPublisher.publishUserUpdated(customer);
-    
+
     return customer;
-  }
+}
 
   static async deleteCustomer(id) {
     const customer = await Customer.findById(id);
@@ -73,7 +74,7 @@ class CustomerService {
 
     const deletedCustomer = await Customer.delete(id);
     await EventPublisher.publishUserDeleted(deletedCustomer);
-    
+
     return deletedCustomer;
   }
 }

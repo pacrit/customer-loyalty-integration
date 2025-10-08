@@ -3,13 +3,13 @@ const pool = require('../config/database');
 class Customer {
   static async create(customerData) {
     const { name, email, fidelityOptIn } = customerData;
-    
+
     const query = `
       INSERT INTO customers (name, email, fidelity_opt_in)
       VALUES ($1, $2, $3)
       RETURNING *
     `;
-    
+
     const result = await pool.query(query, [name, email, fidelityOptIn]);
     return result.rows[0];
   }
@@ -37,15 +37,17 @@ class Customer {
   }
 
   static async update(id, customerData) {
-    const { name, email, fidelityOptIn } = customerData;
-    
+    const { name, email } = customerData;
+    // Aceita tanto camelCase quanto snake_case
+    const fidelityOptIn = customerData.fidelityOptIn ?? customerData.fidelity_opt_in;
+
     const query = `
       UPDATE customers 
       SET name = $1, email = $2, fidelity_opt_in = $3, updated_at = CURRENT_TIMESTAMP
       WHERE id = $4
       RETURNING *
     `;
-    
+
     const result = await pool.query(query, [name, email, fidelityOptIn, id]);
     return result.rows[0];
   }
