@@ -38,7 +38,7 @@ Esta é a forma mais simples de executar o projeto:
 
 ```bash
 # Clone o repositório
-git clone <seu-repositorio>
+git clone https://github.com/pacrit/customer-loyalty-integration.git
 cd customer-loyalty-integration
 
 # Sobe todos os serviços de uma vez (certifique que seu docker está inicializado)
